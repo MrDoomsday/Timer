@@ -104,7 +104,7 @@ always_ff @ (posedge clk or negedge reset_n)
 always_ff @ (posedge clk or negedge reset_n)
     if(!reset_n) busy <= 1'b0;
     else if(start && (counter_reg > 64'h0)) busy <= 1'b1;
-    else if(stop && (counter == 64'h1)) busy <= 1'b0;
+    else if(stop || (counter == 64'h1)) busy <= 1'b0;
 
 assign coe_interrupt = complete;
 
